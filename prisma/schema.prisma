@@ -43,6 +43,8 @@ model User {
   Author         Author[]
   Book           Book[]
   BookSubmission BookSubmission[]
+  Genre          Genre[]
+  Message        Message[]
 }
 
 model Author {
@@ -53,6 +55,7 @@ model Author {
   email     String?  @db.VarChar(255)
   biography String   @db.Text
   photo     String   @db.Text
+  status    Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   editorId  Int
@@ -66,8 +69,8 @@ model Book {
   slug          String      @db.VarChar(255)
   title         String      @db.VarChar(255)
   summary       String      @db.Text
-  cover         String      @db.Text
-  file          String      @db.Text
+  cover         String?     @db.Text
+  file          String?     @db.Text
   status        Boolean     @default(true)
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
@@ -81,13 +84,17 @@ model Book {
 }
 
 model Genre {
-  id        Int         @id @default(autoincrement())
-  code      String      @db.VarChar(255)
-  name      String      @db.VarChar(255)
-  slug      String      @db.VarChar(255)
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  BookGenre BookGenre[]
+  id          Int         @id @default(autoincrement())
+  code        String      @db.VarChar(255)
+  name        String      @db.VarChar(255)
+  description String      @db.Text
+  slug        String      @db.VarChar(255)
+  status      Boolean     @default(true)
+  editorId    Int?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  BookGenre   BookGenre[]
+  editor      User?       @relation(fields: [editorId], references: [id])
 }
 
 model BookGenre {
@@ -96,8 +103,8 @@ model BookGenre {
   genreId   Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Book      Book     @relation(fields: [bookId], references: [id])
-  Genre     Genre    @relation(fields: [genreId], references: [id])
+  book      Book     @relation(fields: [bookId], references: [id])
+  genre     Genre    @relation(fields: [genreId], references: [id])
 }
 
 model Newsletter {
@@ -110,16 +117,28 @@ model Newsletter {
   updatedAt DateTime @updatedAt
 }
 
-model Contact {
+model Subscriber {
+  id        Int      @id @default(autoincrement())
+  code      String   @db.VarChar(255)
+  name      String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  status    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Message {
   id        Int      @id @default(autoincrement())
   code      String   @db.VarChar(255)
   name      String   @db.VarChar(255)
   email     String   @db.VarChar(255)
   subject   String   @db.VarChar(255)
-  message   String   @db.Text
+  content   String   @db.Text
+  readerId  Int?
   status    Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  reader    User?    @relation(fields: [readerId], references: [id])
 }
 
 model BookSubmission {

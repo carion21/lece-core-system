@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { Consts } from '../utilities/constants';
-import { genProfileCode, genUserCode } from '../utilities/functions';
+import { genProfileCode, genUserCode, getSlug } from '../utilities/functions';
 
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
@@ -9,6 +9,24 @@ const prisma = new PrismaClient();
 const configService = new ConfigService();
 
 async function main() {
+  // charger les genres de livres par défaut fichier genres.json
+  const genres = require('../data/genres.json');
+
+  await prisma.profile.deleteMany({});
+  genres.forEach(async (genre: { [x: string]: any }) => {
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log('genre', genre['name']);
+
+    await prisma.genre.create({
+      data: {
+        code: genProfileCode(),
+        name: genre['name'],
+        slug: getSlug(genre['name']),
+        description: genre['description'],
+      },
+    });
+  });
+
   Consts.DEFAULT_PROFILES.forEach(async (profile) => {
     await prisma.profile.deleteMany({});
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -48,11 +66,8 @@ async function main() {
         firstname: user.firstname,
         email: user.email,
         phone: user.phone,
-        username: user.username,
         profileId: profileId,
         password: hash,
-        status: true,
-        createdBy: 1,
       },
     });
   });

@@ -1,0 +1,262 @@
+[
+    {
+        "name": "Fantaisie",
+        "description": "Genre de fiction qui inclut des éléments magiques et surnaturels."
+    },
+    {
+        "name": "Science-fiction",
+        "description": "Genre de fiction basé sur des avancées scientifiques et technologiques imaginaires."
+    },
+    {
+        "name": "Mystère",
+        "description": "Genre centré sur la résolution d'un crime ou d'un énigme."
+    },
+    {
+        "name": "Thriller",
+        "description": "Genre de fiction intense et excitant, souvent avec des éléments de suspense."
+    },
+    {
+        "name": "Romance",
+        "description": "Genre axé sur des histoires d'amour et des relations émotionnelles."
+    },
+    {
+        "name": "Horreur",
+        "description": "Genre destiné à effrayer et à provoquer la peur chez le lecteur."
+    },
+    {
+        "name": "Fiction historique",
+        "description": "Genre qui se déroule dans le passé, souvent avec des événements historiques réels."
+    },
+    {
+        "name": "Jeunes adultes",
+        "description": "Genre destiné aux adolescents, souvent avec des protagonistes jeunes."
+    },
+    {
+        "name": "Enfants",
+        "description": "Genre destiné aux enfants, avec des thèmes et des langages adaptés à leur âge."
+    },
+    {
+        "name": "Non-fiction",
+        "description": "Genre basé sur des faits réels et des événements véritables."
+    },
+    {
+        "name": "Biographie",
+        "description": "Récit détaillant la vie d'une personne réelle."
+    },
+    {
+        "name": "Mémoire",
+        "description": "Récit autobiographique centré sur des moments spécifiques de la vie de l'auteur."
+    },
+    {
+        "name": "Développement personnel",
+        "description": "Livres visant à aider les lecteurs à améliorer divers aspects de leur vie."
+    },
+    {
+        "name": "Santé & forme",
+        "description": "Livres sur la santé, le bien-être et l'exercice physique."
+    },
+    {
+        "name": "Voyage",
+        "description": "Récits et guides sur les voyages et les destinations."
+    },
+    {
+        "name": "True Crime",
+        "description": "Récits de crimes réels et des enquêtes qui les entourent."
+    },
+    {
+        "name": "Humour",
+        "description": "Livres écrits pour faire rire et divertir."
+    },
+    {
+        "name": "Religion & spiritualité",
+        "description": "Livres sur les croyances religieuses et spirituelles."
+    },
+    {
+        "name": "Poésie",
+        "description": "Genre littéraire qui exprime des idées, des sentiments et des histoires à travers des vers."
+    },
+    {
+        "name": "Drame",
+        "description": "Genre de fiction centré sur des conflits émotionnels et des relations humaines."
+    },
+    {
+        "name": "Aventure",
+        "description": "Genre de fiction centré sur des voyages excitants et des quêtes."
+    },
+    {
+        "name": "Dystopique",
+        "description": "Genre de fiction décrivant des sociétés futures oppressives."
+    },
+    {
+        "name": "Romans graphiques",
+        "description": "Livres racontés à travers des illustrations et des dialogues."
+    },
+    {
+        "name": "Nouvelles",
+        "description": "Récits courts, souvent concentrés sur un seul événement ou personnage."
+    },
+    {
+        "name": "Livres de cuisine",
+        "description": "Livres contenant des recettes et des conseils culinaires."
+    },
+    {
+        "name": "Essais",
+        "description": "Textes courts sur divers sujets, souvent argumentatifs ou analytiques."
+    },
+    {
+        "name": "Politique",
+        "description": "Livres sur les théories politiques, les événements et les personnalités."
+    },
+    {
+        "name": "Art",
+        "description": "Livres sur l'histoire de l'art, les techniques et les artistes."
+    },
+    {
+        "name": "Photographie",
+        "description": "Livres de photos et sur la technique photographique."
+    },
+    {
+        "name": "Affaires & économie",
+        "description": "Livres sur le commerce, la finance et les principes économiques."
+    },
+    {
+        "name": "Classiques",
+        "description": "Oeuvres littéraires reconnues pour leur valeur artistique et historique."
+    },
+    {
+        "name": "Contemporain",
+        "description": "Fiction se déroulant à l'époque actuelle."
+    },
+    {
+        "name": "Érotique",
+        "description": "Fiction centrée sur des relations sexuelles explicites."
+    },
+    {
+        "name": "Fantastique",
+        "description": "Genre de fiction avec des éléments surnaturels et imaginaires."
+    },
+    {
+        "name": "Science humaine",
+        "description": "Livres sur les disciplines académiques telles que la psychologie, la sociologie, etc."
+    },
+    {
+        "name": "Auto-assistance",
+        "description": "Livres offrant des conseils pour améliorer sa vie."
+    },
+    {
+        "name": "Thriller psychologique",
+        "description": "Genre de fiction où la tension est centrée sur l'état mental des personnages."
+    },
+    {
+        "name": "Société",
+        "description": "Livres explorant les problèmes sociaux et les comportements humains."
+    },
+    {
+        "name": "Histoire",
+        "description": "Livres sur les événements et les figures historiques."
+    },
+    {
+        "name": "Musique",
+        "description": "Livres sur la musique, les musiciens et l'histoire musicale."
+    },
+    {
+        "name": "Éducation",
+        "description": "Livres sur les méthodes d'enseignement et l'apprentissage."
+    },
+    {
+        "name": "Science",
+        "description": "Livres sur les découvertes scientifiques et les théories."
+    },
+    {
+        "name": "Philosophie",
+        "description": "Livres explorant les questions fondamentales sur la vie, l'existence et la morale."
+    },
+    {
+        "name": "Nature & environnement",
+        "description": "Livres sur l'écologie, la conservation et les paysages naturels."
+    },
+    {
+        "name": "Hobbies & loisirs",
+        "description": "Livres sur les passe-temps et les activités de loisirs."
+    },
+    {
+        "name": "Parentalité",
+        "description": "Livres sur l'éducation et les soins des enfants."
+    },
+    {
+        "name": "Maison & jardin",
+        "description": "Livres sur l'entretien de la maison et du jardinage."
+    },
+    {
+        "name": "Sciences occultes",
+        "description": "Livres sur les pratiques ésotériques et mystiques."
+    },
+    {
+        "name": "Essais personnels",
+        "description": "Récits d'expériences et de réflexions personnelles."
+    },
+    {
+        "name": "Anthologie",
+        "description": "Recueils d'œuvres littéraires variées."
+    },
+    {
+        "name": "Cyberpunk",
+        "description": "Genre de science-fiction axé sur une vision dystopique future avec une technologie avancée et un ordre social brisé."
+    },
+    {
+        "name": "Steampunk",
+        "description": "Genre de fiction historique anachronique combinant des éléments de l'époque victorienne et des technologies de vapeur avancées."
+    },
+    {
+        "name": "Space Opera",
+        "description": "Sous-genre de la science-fiction caractérisé par des aventures épiques et dramatiques se déroulant dans l'espace."
+    },
+    {
+        "name": "Uchronie",
+        "description": "Genre de fiction qui explore des histoires alternatives où des événements historiques ont évolué différemment."
+    },
+    {
+        "name": "Chick Lit",
+        "description": "Genre de fiction légère et humoristique qui aborde les préoccupations des femmes modernes."
+    },
+    {
+        "name": "Littérature LGBTQ+",
+        "description": "Livres explorant les thèmes et les expériences des personnes LGBTQ+."
+    },
+    {
+        "name": "Noir",
+        "description": "Genre de fiction policière sombre et pessimiste, souvent avec des détectives privés ou des criminels anti-héros."
+    },
+    {
+        "name": "Fiction spéculative",
+        "description": "Genre englobant des histoires imaginatives, souvent avec des éléments de science-fiction, de fantasy ou de fantastique."
+    },
+    {
+        "name": "Romance paranormale",
+        "description": "Genre de fiction romantique combinant des éléments surnaturels et paranormaux."
+    },
+    {
+        "name": "Roman épistolaire",
+        "description": "Genre de fiction où l'histoire est racontée à travers une série de lettres, de journaux intimes ou d'autres documents personnels."
+    },
+    {
+        "name": "Eco-fiction",
+        "description": "Genre de fiction abordant des thèmes environnementaux et écologiques."
+    },
+    {
+        "name": "Fiction utopique",
+        "description": "Genre de fiction décrivant des sociétés idéales et parfaites."
+    },
+    {
+        "name": "Transhumanisme",
+        "description": "Genre de science-fiction explorant les implications de la technologie sur l'évolution humaine."
+    },
+    {
+        "name": "Roman gothique",
+        "description": "Genre de fiction sombre et mystérieux, souvent avec des éléments surnaturels et des décors anciens."
+    },
+    {
+        "name": "Fiction autochtone",
+        "description": "Livres écrits par des auteurs autochtones ou abordant les cultures et les expériences des peuples autochtones."
+    }
+]
