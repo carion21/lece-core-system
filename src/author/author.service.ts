@@ -65,7 +65,7 @@ export class AuthorService {
   }
 
   async findAll() {
-    const authors = await this.prismaService.author.findMany({
+    let authors = await this.prismaService.author.findMany({
       include: {
         editor: {
           select: {
@@ -84,9 +84,14 @@ export class AuthorService {
     });
 
     // Get the photo URL
-    authors.forEach(async (author) => {
-      author['photoUrl'] = await this.minioService.getFileUrl(author.photo);
-    });
+    authors = await Promise.all(
+      authors.map(async (author) => {
+        author['photoUrl'] = author.photo
+          ? await this.minioService.getFileUrl(author.photo)
+          : null;
+        return author;
+      }),
+    );
 
     // Return the response
     return {
@@ -113,7 +118,9 @@ export class AuthorService {
     if (!author) throw new NotFoundException('Author not found');
 
     // Get the photo URL
-    author['photoUrl'] = await this.minioService.getFileUrl(author.photo);
+    author['photoUrl'] = author.photo
+      ? await this.minioService.getFileUrl(author.photo)
+      : null;
 
     let books = await this.prismaService.book.findMany({
       select: {
