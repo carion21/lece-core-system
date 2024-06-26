@@ -144,6 +144,7 @@ export class BookService {
           select: {
             id: true,
             name: true,
+            slug: true,
             biography: true,
           },
         },
@@ -206,6 +207,7 @@ export class BookService {
           select: {
             id: true,
             name: true,
+            slug: true,
             biography: true,
           },
         },
@@ -264,6 +266,7 @@ export class BookService {
           select: {
             id: true,
             name: true,
+            slug: true,
             biography: true,
           },
         },
