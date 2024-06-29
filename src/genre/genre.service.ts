@@ -64,10 +64,11 @@ export class GenreService {
         },
       },
       where: {
-        status: true,
+        deleted: false,
       },
       orderBy: {
-        name: 'asc',
+        // name: 'asc',
+        createdAt: 'desc',
       },
     });
 
@@ -95,7 +96,7 @@ export class GenreService {
             return book;
           }),
         );
-
+        delete genre.BookGenre;
         genre['books'] = books;
         return genre;
       }),
@@ -124,6 +125,7 @@ export class GenreService {
       },
       where: {
         slug,
+        deleted: false,
       },
     });
     if (!genre) throw new NotFoundException('Genre not found');
@@ -150,6 +152,8 @@ export class GenreService {
         return book;
       }),
     );
+    delete genre.BookGenre;
+    genre['books'] = books;
 
     // Return the response
     return {
@@ -177,6 +181,7 @@ export class GenreService {
       },
       where: {
         id,
+        deleted: false,
       },
     });
     if (!genre) throw new NotFoundException('Genre not found');
@@ -221,6 +226,7 @@ export class GenreService {
     const genre = this.prismaService.genre.findUnique({
       where: {
         id,
+        deleted: false,
       },
     });
     if (!genre) throw new NotFoundException('Genre not found');
@@ -262,6 +268,7 @@ export class GenreService {
     let genre = await this.prismaService.genre.findUnique({
       where: {
         id,
+        deleted: false,
       },
     });
     if (!genre) throw new NotFoundException('Genre not found');

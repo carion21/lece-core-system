@@ -48,9 +48,12 @@ export class Consts {
       'admin_update',
       'admin_find_all',
       'admin_find_one',
-      'admin_change_status'
+      'admin_change_status',
+      'stat_find_all'
     ],
     admin: [
+      'stat_find_all',
+      'admin_find_one',
       'author_create',
       'author_update',
       'author_find_all',

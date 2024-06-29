@@ -117,6 +117,7 @@ export class AdminService {
         createdAt: true,
         updatedAt: true,
         profilePicture: true,
+        profile: true,
       },
     });
     if (!admin) throw new NotFoundException('Admin not found');

@@ -76,7 +76,7 @@ export class AuthorService {
         },
       },
       where: {
-        status: true,
+        deleted: false,
       },
       orderBy: {
         createdAt: 'desc',
@@ -86,6 +86,11 @@ export class AuthorService {
     // Get the photo URL
     authors = await Promise.all(
       authors.map(async (author) => {
+        author['bookCount'] = await this.prismaService.book.count({
+          where: {
+            authorId: author.id,
+          },
+        });
         author['photoUrl'] = author.photo
           ? await this.minioService.getFileUrl(author.photo)
           : null;
@@ -175,11 +180,13 @@ export class AuthorService {
     let books = await this.prismaService.book.findMany({
       select: {
         id: true,
+        code: true,
         title: true,
         slug: true,
         summary: true,
         file: true,
         cover: true,
+        status: true,
       },
       where: {
         authorId: author.id,
@@ -187,9 +194,9 @@ export class AuthorService {
     });
     books = await Promise.all(
       books.map(async (book) => {
-        book['fileUrl'] = book.file
-          ? await this.minioService.getFileUrl(book.file)
-          : null;
+        // book['fileUrl'] = book.file
+        //   ? await this.minioService.getFileUrl(book.file)
+        //   : null;
         book['coverUrl'] = book.cover
           ? await this.minioService.getFileUrl(book.cover)
           : null;

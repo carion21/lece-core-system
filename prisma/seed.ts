@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { Consts } from '../utilities/constants';
-import { genProfileCode, genUserCode, getSlug } from '../utilities/functions';
+import { genGenreCode, genProfileCode, genUserCode, getSlug } from '../utilities/functions';
 
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
@@ -17,11 +17,12 @@ async function main() {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log('genre', genre['name']);
 
+    const genre_code = genGenreCode();
     await prisma.genre.create({
       data: {
-        code: genProfileCode(),
+        code: genre_code,
         name: genre['name'],
-        slug: getSlug(genre['name']),
+        slug: getSlug(genre_code + '-' + genre['name']),
         description: genre['description'],
       },
     });

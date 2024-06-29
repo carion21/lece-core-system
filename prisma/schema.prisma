@@ -56,8 +56,10 @@ model Author {
   biography String   @db.Text
   photo     String   @db.Text
   status    Boolean  @default(true)
+  deleted   Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  deletedAt DateTime?
   editorId  Int
   books     Book[]
   editor    User     @relation(fields: [editorId], references: [id])
@@ -72,8 +74,10 @@ model Book {
   cover         String?     @db.Text
   file          String?     @db.Text
   status        Boolean     @default(true)
+  deleted       Boolean     @default(false)
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
+  deletedAt     DateTime?
   createdBy     Int?
   publishedDate DateTime?
   authorId      Int
@@ -90,9 +94,11 @@ model Genre {
   description String      @db.Text
   slug        String      @db.VarChar(255)
   status      Boolean     @default(true)
+  deleted     Boolean     @default(false)
   editorId    Int?
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
+  deletedAt   DateTime?
   BookGenre   BookGenre[]
   editor      User?       @relation(fields: [editorId], references: [id])
 }

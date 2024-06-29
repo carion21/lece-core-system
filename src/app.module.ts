@@ -11,6 +11,7 @@ import { GenreModule } from './genre/genre.module';
 import { BookModule } from './book/book.module';
 import { SubscriberModule } from './subscriber/subscriber.module';
 import { MessageModule } from './message/message.module';
+import { StatsModule } from './stats/stats.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { MessageModule } from './message/message.module';
     PrismaModule,
     AuthModule,
     MinioModule,
+    StatsModule,
     AdminModule,
     AuthorModule,
     GenreModule,
