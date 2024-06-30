@@ -161,6 +161,9 @@ export class BookService {
           },
         },
       },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
 
     books = await Promise.all(
