@@ -37,6 +37,15 @@ export class MessageService {
 
   async findAll() {
     const messages = await this.prismaService.message.findMany({
+      include: {
+        reader: {
+          select: {
+            id: true,
+            lastname: true,
+            firstname: true,
+          },
+        },
+      },
       orderBy: {
         createdAt: 'desc',
       },

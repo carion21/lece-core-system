@@ -21,7 +21,7 @@ export class BookService {
   ) {}
 
   async create(createBookDto: CreateBookDto, userAuthenticated: object) {
-    const { authorId, title, summary, genres } = createBookDto;
+    const { authorId, title, summary, pages, releaseDate, genres } = createBookDto;
 
     // Verify if the author exists
     const authorExists = await this.prismaService.author.findFirst({
@@ -40,6 +40,8 @@ export class BookService {
         summary,
         slug: getSlug(bookCode + '-' + title),
         authorId,
+        pages,
+        releaseDate: new Date(releaseDate),
         editorId: userAuthenticated['id'],
       },
     });
@@ -325,7 +327,7 @@ export class BookService {
   }
 
   async update(id: number, updateBookDto: UpdateBookDto) {
-    const { title, summary, genres } = updateBookDto;
+    const { title, summary, pages, releaseDate, genres } = updateBookDto;
 
     // Find the Book
     let book = await this.prismaService.book.findUnique({
@@ -343,6 +345,8 @@ export class BookService {
       data: {
         title,
         summary,
+        pages,
+        releaseDate: new Date(releaseDate),
       },
     });
     if (!bookUpdated)

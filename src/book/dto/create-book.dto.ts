@@ -1,4 +1,4 @@
-import { IsArray, IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsArray, IsDate, IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export class CreateBookDto {
 
@@ -13,6 +13,14 @@ export class CreateBookDto {
     @IsString()
     @IsNotEmpty()
     readonly summary: string;
+
+    @IsNumber()
+    @IsNotEmpty()
+    readonly pages: number;
+
+    @IsString()
+    @IsNotEmpty()
+    readonly releaseDate: Date;
 
     @IsArray()
     @IsNotEmpty()

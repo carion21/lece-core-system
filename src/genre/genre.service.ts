@@ -20,21 +20,14 @@ export class GenreService {
 
   async create(createGenreDto: CreateGenreDto) {
     const { name, description } = createGenreDto;
-    // Verify if the genre already exists
-    const slug = getSlug(name);
-    const genreExists = await this.prismaService.genre.findFirst({
-      where: {
-        slug,
-      },
-    });
-    if (genreExists) throw new ConflictException('Genre already exists');
-
+    
+    const genre_code = genGenreCode();
     const genre = await this.prismaService.genre.create({
       data: {
-        code: genGenreCode(),
+        code: genre_code,
         name,
         description,
-        slug,
+        slug: getSlug(genre_code + '-' + name),
       },
     });
     if (!genre)
@@ -223,24 +216,13 @@ export class GenreService {
   async update(id: number, updateGenreDto: UpdateGenreDto) {
     const { name, description } = updateGenreDto;
     // Find the genre
-    const genre = this.prismaService.genre.findUnique({
+    const genre = await this.prismaService.genre.findUnique({
       where: {
         id,
         deleted: false,
       },
     });
     if (!genre) throw new NotFoundException('Genre not found');
-
-    const slug = getSlug(name);
-    const genreExists = await this.prismaService.genre.findFirst({
-      where: {
-        id: {
-          not: id,
-        },
-        slug,
-      },
-    });
-    if (genreExists) throw new ConflictException('Genre already exists');
 
     const genreUpdated = await this.prismaService.genre.update({
       where: {
@@ -249,7 +231,7 @@ export class GenreService {
       data: {
         name,
         description,
-        slug,
+        slug: getSlug(genre.code + '-' + name),
       },
     });
     if (!genreUpdated)

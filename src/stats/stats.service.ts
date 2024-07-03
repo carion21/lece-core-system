@@ -25,6 +25,11 @@ export class StatsService {
     const count_submissions = await this.prismaService.bookSubmission.count();
     const count_subscribers = await this.prismaService.subscriber.count();
     const count_messages = await this.prismaService.message.count();
+    const count_new_messages = await this.prismaService.message.count({
+      where: {
+        readerId: null
+      }
+    });
     
     return {
       message: 'Stats found',
@@ -35,6 +40,7 @@ export class StatsService {
         count_submissions: count_submissions,
         count_subscribers: count_subscribers,
         count_messages: count_messages,
+        count_new_messages: count_new_messages
       },
     }
   }

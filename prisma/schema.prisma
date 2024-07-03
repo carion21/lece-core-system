@@ -79,7 +79,8 @@ model Book {
   updatedAt     DateTime    @updatedAt
   deletedAt     DateTime?
   createdBy     Int?
-  publishedDate DateTime?
+  releaseDate   DateTime?
+  pages         Int        @default(0)
   authorId      Int
   editorId      Int
   author        Author      @relation(fields: [authorId], references: [id])
