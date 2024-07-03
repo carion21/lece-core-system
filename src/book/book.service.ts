@@ -215,6 +215,7 @@ export class BookService {
             name: true,
             slug: true,
             biography: true,
+            status: true
           },
         },
         editor: {
@@ -246,6 +247,7 @@ export class BookService {
             id: true,
             name: true,
             slug: true,
+            status: true
           },
           where: {
             id: {
