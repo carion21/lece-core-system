@@ -138,6 +138,9 @@ export class AuthorService {
       where: {
         authorId: author.id,
       },
+      orderBy: {
+        releaseDate: 'asc'
+      }
     });
     books = await Promise.all(
       books.map(async (book) => {
