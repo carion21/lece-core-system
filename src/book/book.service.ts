@@ -255,6 +255,7 @@ export class BookService {
         });
         // remove the BookGenre
         delete book.BookGenre;
+        book['genres'] = genres;
 
         // Get the file URL
         // book['fileUrl'] = book.file
