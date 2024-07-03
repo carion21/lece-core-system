@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE `Book` ADD COLUMN `isInReleaseFuture` BOOLEAN NOT NULL DEFAULT false,
+    ADD COLUMN `isInTop` BOOLEAN NOT NULL DEFAULT false,
+    ADD COLUMN `isRecent` BOOLEAN NOT NULL DEFAULT false;

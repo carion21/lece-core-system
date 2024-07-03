@@ -112,6 +112,11 @@ export class BookController {
     return this.bookService.findAll();
   }
 
+  @Get('tops')
+  getTops() {
+    return this.bookService.getTops();
+  }
+
   @Get('by-slug/:slug')
   findOneBySlug(@Param('slug') slug: string) {
     return this.bookService.findOneBySlug(slug);

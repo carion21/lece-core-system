@@ -21,7 +21,8 @@ export class BookService {
   ) {}
 
   async create(createBookDto: CreateBookDto, userAuthenticated: object) {
-    const { authorId, title, summary, pages, releaseDate, genres } = createBookDto;
+    const { authorId, title, summary, pages, releaseDate, genres } =
+      createBookDto;
 
     // Verify if the author exists
     const authorExists = await this.prismaService.author.findFirst({
@@ -165,6 +166,75 @@ export class BookService {
       },
       orderBy: {
         createdAt: 'desc',
+      },
+    });
+
+    books = await Promise.all(
+      books.map(async (book) => {
+        // Get the genres
+        const genres = await this.prismaService.genre.findMany({
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+          },
+          where: {
+            id: {
+              in: book.BookGenre.map((bg) => bg.genreId),
+            },
+          },
+        });
+        // remove the BookGenre
+        delete book.BookGenre;
+
+        // Get the file URL
+        // book['fileUrl'] = book.file
+        //   ? await this.minioService.getFileUrl(book.file)
+        //   : null;
+        book['coverUrl'] = book.cover
+          ? await this.minioService.getFileUrl(book.cover)
+          : null;
+
+        return book;
+      }),
+    );
+
+    // Return the response
+    return {
+      message: 'Books found',
+      data: books,
+    };
+  }
+
+  async getTops() {
+    let books = await this.prismaService.book.findMany({
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            biography: true,
+          },
+        },
+        editor: {
+          select: {
+            id: true,
+            lastname: true,
+            firstname: true,
+          },
+        },
+        BookGenre: {
+          select: {
+            genreId: true,
+          },
+        },
+      },
+      where: {
+        isInTop: true,
+      },
+      orderBy: {
+        rankInTop: 'asc',
       },
     });
 
