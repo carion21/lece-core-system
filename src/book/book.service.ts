@@ -187,9 +187,9 @@ export class BookService {
         delete book.BookGenre;
 
         // Get the file URL
-        book['fileUrl'] = book.file
-          ? await this.minioService.getFileUrl(book.file)
-          : null;
+        // book['fileUrl'] = book.file
+        //   ? await this.minioService.getFileUrl(book.file)
+        //   : null;
         book['coverUrl'] = book.cover
           ? await this.minioService.getFileUrl(book.cover)
           : null;

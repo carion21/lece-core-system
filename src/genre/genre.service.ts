@@ -130,6 +130,14 @@ export class GenreService {
         slug: true,
         summary: true,
         cover: true,
+        author: {
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            biography: true,
+          },
+        }
       },
       where: {
         id: {
