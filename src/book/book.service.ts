@@ -278,6 +278,78 @@ export class BookService {
     };
   }
 
+  async getRecents() {
+    let books = await this.prismaService.book.findMany({
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            biography: true,
+            status: true
+          },
+        },
+        editor: {
+          select: {
+            id: true,
+            lastname: true,
+            firstname: true,
+          },
+        },
+        BookGenre: {
+          select: {
+            genreId: true,
+          },
+        },
+      },
+      where: {
+        isRecent: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    books = await Promise.all(
+      books.map(async (book) => {
+        // Get the genres
+        const genres = await this.prismaService.genre.findMany({
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            status: true
+          },
+          where: {
+            id: {
+              in: book.BookGenre.map((bg) => bg.genreId),
+            },
+          },
+        });
+        // remove the BookGenre
+        delete book.BookGenre;
+        book['genres'] = genres;
+
+        // Get the file URL
+        // book['fileUrl'] = book.file
+        //   ? await this.minioService.getFileUrl(book.file)
+        //   : null;
+        book['coverUrl'] = book.cover
+          ? await this.minioService.getFileUrl(book.cover)
+          : null;
+
+        return book;
+      }),
+    );
+
+    // Return the response
+    return {
+      message: 'Books found',
+      data: books,
+    };
+  }
+
   async findOneBySlug(slug: string) {
     const book = await this.prismaService.book.findFirst({
       include: {

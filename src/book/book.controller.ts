@@ -117,6 +117,11 @@ export class BookController {
     return this.bookService.getTops();
   }
 
+  @Get('recents')
+  getRecents() {
+    return this.bookService.getRecents();
+  }
+
   @Get('by-slug/:slug')
   findOneBySlug(@Param('slug') slug: string) {
     return this.bookService.findOneBySlug(slug);
