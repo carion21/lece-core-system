@@ -192,6 +192,7 @@ export class GenreService {
         id: true,
         title: true,
         slug: true,
+        status: true,
         summary: true,
         file: true,
         cover: true,
