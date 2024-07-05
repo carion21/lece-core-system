@@ -307,7 +307,8 @@ export class BookService {
         isRecent: true,
       },
       orderBy: {
-        createdAt: 'desc',
+        // createdAt: 'desc',
+        releaseDate: 'desc'
       },
     });
 
