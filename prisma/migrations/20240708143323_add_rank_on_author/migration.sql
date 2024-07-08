@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Author` ADD COLUMN `rank` INTEGER NOT NULL DEFAULT 0;
