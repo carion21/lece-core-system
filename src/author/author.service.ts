@@ -79,7 +79,7 @@ export class AuthorService {
         deleted: false,
       },
       orderBy: {
-        createdAt: 'asc',
+        rank: 'asc',
       },
     });
 
