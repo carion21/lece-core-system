@@ -14,13 +14,14 @@ export class MessageService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async create(createMessageDto: CreateMessageDto) {
-    const { name, email, subject, content } = createMessageDto;
+    const { name, email, phone, subject, content } = createMessageDto;
 
     const message = await this.prismaService.message.create({
       data: {
         code: genMessageCode(),
         name,
         email,
+        phone,
         subject,
         content,
       },

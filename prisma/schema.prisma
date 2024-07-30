@@ -144,6 +144,7 @@ model Message {
   code      String   @db.VarChar(255)
   name      String   @db.VarChar(255)
   email     String   @db.VarChar(255)
+  phone     String   @db.VarChar(255) @default("")
   subject   String   @db.VarChar(255)
   content   String   @db.Text
   readerId  Int?

@@ -76,7 +76,7 @@ export class Consts {
       'message_read_one',
       'book_submission_find_all',
       'book_submission_find_one',
-      'book_submission_change_status',
+      'book_submission_view_one',
     ]
   };
 }

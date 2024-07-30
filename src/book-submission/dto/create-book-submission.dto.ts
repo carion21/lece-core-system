@@ -1,14 +1,13 @@
 import { IsEmail, IsNotEmpty, IsString } from "class-validator";
 
-export class CreateMessageDto {
+export class CreateBookSubmissionDto {
 
     @IsString()
     @IsNotEmpty()
     readonly name: string;
 
-    @IsString()
-    @IsNotEmpty()
     @IsEmail()
+    @IsNotEmpty()
     readonly email: string;
 
     @IsString()
@@ -17,10 +16,9 @@ export class CreateMessageDto {
 
     @IsString()
     @IsNotEmpty()
-    readonly subject: string;
+    readonly title: string;
 
     @IsString()
     @IsNotEmpty()
-    readonly content: string;
-
+    readonly summary: string;
 }

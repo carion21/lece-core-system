@@ -12,6 +12,7 @@ import { BookModule } from './book/book.module';
 import { SubscriberModule } from './subscriber/subscriber.module';
 import { MessageModule } from './message/message.module';
 import { StatsModule } from './stats/stats.module';
+import { BookSubmissionModule } from './book-submission/book-submission.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { StatsModule } from './stats/stats.module';
     BookModule,
     SubscriberModule,
     MessageModule,
+    BookSubmissionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

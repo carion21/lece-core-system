@@ -74,6 +74,10 @@ const genMessageCode = () => {
   return generateCode('MSG');
 }
 
+const genBookSubmissionCode = () => {
+  return generateCode('BKS');
+}
+
 const applyRbac = (userAuthenticated: object, permission: string) => {
   if (
     Consts.ROLES[userAuthenticated['profile']['value']].indexOf(permission) ===
@@ -107,6 +111,7 @@ export {
   genNewsletterCode,
   genSubscriberCode,
   genMessageCode,
+  genBookSubmissionCode,
   applyRbac,
   getUiAvatar,
 };
