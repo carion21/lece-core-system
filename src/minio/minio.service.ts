@@ -14,6 +14,7 @@ export class MinioService {
   readonly minioAccess = this.configService.get<string>('MINIO_ACCESS_KEY');
   readonly minioSecret = this.configService.get<string>('MINIO_SECRET_KEY');
   readonly minioBucket = this.configService.get<string>('MINIO_BUCKET_NAME');
+  readonly minioProxy = this.configService.get<string>('MINIO_PROXY');
 
   getMinioClient() {
     const Minio = require('minio');
@@ -63,10 +64,15 @@ export class MinioService {
   async getFileUrl(objectName: string) {
     const minioClient = this.getMinioClient();
 
-    return await minioClient.presignedGetObject(
+    const objectUrl = await minioClient.presignedGetObject(
       this.minioBucket,
       objectName,
       Consts.DEFAULT_DURATION * 24 * 60 * 60,
+    );
+    // Replace minio host and port with proxy
+    return objectUrl.replace(
+      `http://${this.minioHost}:${this.minioPort}`,
+      this.minioProxy,
     );
   }
 
